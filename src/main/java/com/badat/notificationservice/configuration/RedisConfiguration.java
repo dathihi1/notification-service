@@ -3,6 +3,7 @@ package com.badat.notificationservice.configuration;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -24,7 +25,9 @@ public class RedisConfiguration {
 
         // Value serializer with JSON
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModules();
+
+        // Register JavaTimeModule for LocalDateTime support
+        objectMapper.registerModules(new JavaTimeModule());
 
         objectMapper.activateDefaultTyping(
                 LaissezFaireSubTypeValidator.instance,
