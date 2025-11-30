@@ -1,0 +1,30 @@
+spring:
+  server:
+    port: 8080
+  application:
+   name: notification
+  datasource:
+    url: jdbc:mysql://localhost:3306/notification_service?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dat2801zz@gmail.com
+    password: yoxh secc lerq ykat # <-- See security note below
+    from: dat2801zz@gmail.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    default-encoding: UTF-8
